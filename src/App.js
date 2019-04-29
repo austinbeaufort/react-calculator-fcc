@@ -3,6 +3,7 @@ import './App.css';
 
 import DigitGrid from './components/DigitGrid/DigitGrid';
 import OperatorsGrid from './components/OperatorsGrid/OperatorsGrid';
+import quotes from './helperBin/motivation';
 import Display from './components/Display/Display';
 
 import safeEval from 'safe-eval';
@@ -17,6 +18,7 @@ class App extends Component {
     this.clearHandler = this.clearHandler.bind(this);
     this.inputHandler = this.inputHandler.bind(this);
     this.mathHandler = this.mathHandler.bind(this);
+    this.motivateHandler = this.motivateHandler.bind(this);
   }
 
   clearHandler() {
@@ -94,14 +96,39 @@ class App extends Component {
       }
     }
   }
+
+  motivateHandler() {
+    let newQuote = quotes[Math.floor(Math.random() * 20)].quote;
+    this.setState({
+      display: newQuote,
+      isDecimal: false,
+      isOperator: false
+    });
+  }
+
   render() {
     return (
       <div className="App">
+        <div className="headerContainer">
+        <img src="https://i.ibb.co/mchrNYL/45-Q58-PIC16bj-G40-Rptbcr-PIC2018.png" width="50px" height="50px" alt="logo" />
+        <h5>Beaufort Tek</h5>
+        <div className="solarContainer">
+          <div className="solar"></div>
+          <div className="solar"></div>
+          <div className="solar"></div>
+          <div className="solar"></div>
+        </div>
+        <h3>BOW-84 Plus</h3>
+        </div>
+
         <Display display={this.state.display}/>
-        <DigitGrid id="digits" click={this.inputHandler}/>
-        <OperatorsGrid id="operators" click={this.inputHandler}/>
-        <button onClick={this.mathHandler} id="equals">=</button>
-        <button onClick={this.clearHandler} id="clear">AC</button>
+        <div className="buttonsContainer">
+          <DigitGrid id="digits" click={this.inputHandler}/>
+          <OperatorsGrid id="operators" click={this.inputHandler}/>
+          <button className="equals button" onClick={this.mathHandler} id="equals">=</button>
+          <button className="clear button" onClick={this.clearHandler} id="clear">AC</button>
+          <button className="button motivate" id="motivated" onClick={this.motivateHandler}><span role="img" aria-label="motivate quote">💪🏻</span></button>
+        </div>
       </div>
     );
   }

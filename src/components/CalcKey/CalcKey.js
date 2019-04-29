@@ -2,7 +2,7 @@ import React from 'react';
 
 const calcKey = props => {
     return (
-        <button onClick={props.click} id={props.id}>{props.keyValue}</button>
+        <button className="button" onClick={props.click} id={props.id}>{props.keyValue}</button>
     )
 }
 
