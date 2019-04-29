@@ -28,10 +28,25 @@ class App extends Component {
   }
 
   mathHandler() {
-    let total = safeEval(this.state.display);
-    this.setState({
-      display: total
-    });
+    let lastItem = this.state.display[this.state.display.length - 1];
+    if (lastItem === '+' || lastItem === '-' || lastItem === '*' || lastItem === '/') {
+      let newDisplay = this.state.display.split('');
+      let usableDisplay = newDisplay.splice(0, newDisplay.length - 1).join('');
+      let total = safeEval(usableDisplay);
+      this.setState({
+        isDecimal: false,
+        isOperator: false,
+        display: total
+      });
+    }
+    else {
+      let total = safeEval(this.state.display);
+      this.setState({
+        isDecimal: false,
+        isOperator: false,
+        display: total
+      });
+    }
   }
 
   inputHandler(e) {
