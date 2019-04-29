@@ -2,7 +2,7 @@
   "name": "calculator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://austinbeaufort.github.io/react-calculator-fcc/",
+  "homepage": "https://austinbeaufort.github.io/react-calculator-fcc",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
